@@ -14,8 +14,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Content Include=".gitignore" />
-    <Content Include="appsettings.Development.json" />
+    <!--<Content Include=".gitignore" />
+    <Content Include="appsettings.Development.json" />-->
   </ItemGroup>
   <!--<ItemGroup>
     <Content Include="Properties\launchSettings.json" />

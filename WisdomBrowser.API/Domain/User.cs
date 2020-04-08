@@ -7,11 +7,6 @@ namespace WisdomBrowser.API.Domain
 {
     public class User : IdentityUser<int>
     {
-        //public int Id { get; set; }
-        //public string UserName { get; private set; }
-        //public byte[] PasswordHash { get; private set; }
-        //public byte[] PasswordSalt { get; private set; }
-        
         private HashSet<Course> _courses; 
         public IEnumerable<Course> Courses => _courses?.ToList();
         public User()
@@ -22,12 +17,7 @@ namespace WisdomBrowser.API.Domain
         {
 
         }
-        //public User(string name, byte[] passwordHash, byte[] passwordSalt)
-        //{
-        //    UserName = name;
-        //    PasswordSalt = passwordSalt;
-        //    PasswordHash = passwordHash;
-        //}
+        
         public void AddCourse(int numStars, string comment, string voterName /*, DbContext context = null*/) 
         {
             /*

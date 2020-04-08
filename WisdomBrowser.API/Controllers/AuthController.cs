@@ -24,7 +24,7 @@ namespace WisdomBrowser.API.Controllers
         {
             Course course = new Course();
             course.Title = "DIY";
-            
+
             return Ok(course);
         }
         [HttpGet("register")]
@@ -37,15 +37,17 @@ namespace WisdomBrowser.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
-            if (ModelState.IsValid)
+            bool isExist = await _authRepository.UserExist(userForRegisterDto.Login);
+            if (isExist)
+                return BadRequest("User already exist");
+            else
             {
                 var user = await _authRepository.Register(userForRegisterDto);
                 if (user == null)
                     return BadRequest("Valid user registration");
                 else
-                    return Ok("201");
+                    return Ok("User registered");
             }
-            else return null;
         }
 
         [HttpGet("login")]

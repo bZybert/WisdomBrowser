@@ -10,6 +10,7 @@ import { AuthService } from './core/services/auth.service';
 import { HomeComponent } from './shared/components/home/home.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 import { ErrorInterceptorProvider } from './core/services/error.interceptor';
+import { AlertifyService } from './core/services/alertify.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     , RouterModule.forRoot(appRoutes)
     , FormsModule
   ],
-  providers: [AuthService, ErrorInterceptorProvider],
+  providers: [AuthService, ErrorInterceptorProvider, AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
