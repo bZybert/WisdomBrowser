@@ -10,7 +10,7 @@ using WisdomBrowser.API.Infrastructure.EFCore;
 namespace WisdomBrowser.API.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20200402130510_InitialCreate")]
+    [Migration("20200410130507_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,10 +161,7 @@ namespace WisdomBrowser.API.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsetId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -296,7 +293,9 @@ namespace WisdomBrowser.API.Migrations
                 {
                     b.HasOne("WisdomBrowser.API.Domain.User", "User")
                         .WithMany("Courses")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

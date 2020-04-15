@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-nav',
@@ -9,8 +10,10 @@ import { AlertifyService } from '../../services/alertify.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  radioTags: any = [];
   isUserLogged = false;
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  modalRef: BsModalRef;
+  constructor(private authService: AuthService, private alertify: AlertifyService, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.isLogged();
@@ -53,4 +56,10 @@ isLogged(){
     this.isUserLogged = false;
   }
 }
+
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+}
+
+
 }

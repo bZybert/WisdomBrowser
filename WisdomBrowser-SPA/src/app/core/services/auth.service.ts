@@ -16,8 +16,6 @@ export class AuthService {
       .pipe(
         map((response: any) => {
           const user = response;
-          console.log('user from serwer:');
-          console.log(user);
           if (user) {
             localStorage.setItem('token', user.securityStamp);
           }

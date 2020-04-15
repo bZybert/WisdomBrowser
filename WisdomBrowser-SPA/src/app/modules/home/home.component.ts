@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  constructor() { }
+  contentData: any;
+  constructor(private tedApi: TedApiService) { }
 
   ngOnInit() {
+    this.baseContentData();
   }
+
+baseContentData(){
+  this.tedApi.getBaseContentData().subscribe(response => {
+  this.contentData = response;
+  console.log(response);
+  });
+}
 
   registerToogle(){
   this.registerMode = true;
