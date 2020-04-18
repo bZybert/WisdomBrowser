@@ -16,12 +16,20 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginFormComponent } from './modules/login-form/login-form.component';
 import { TedApiService } from './core/http/tedApi/ted-api.service';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ArticleCardComponent } from './modules/article-card/article-card.component';
+import { VideoCardComponent } from './modules/video-card/video-card.component';
+
+
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterFormComponent },
-  { path: 'login', component: LoginFormComponent }
+  { path: 'login', component: LoginFormComponent },
+  { path: 'articles', component: ArticleCardComponent },
+  { path: 'videos', component: VideoCardComponent }
+
 
 ];
 
@@ -33,6 +41,8 @@ const appRoutes: Routes = [
     , LoginFormComponent
     , NavComponent
     , HomeComponent
+    , ArticleCardComponent
+    , VideoCardComponent
   ],
   imports: [
     BrowserModule
@@ -42,6 +52,8 @@ const appRoutes: Routes = [
     , BrowserAnimationsModule
     , BsDropdownModule.forRoot()
     , ModalModule.forRoot()
+    , CarouselModule.forRoot()
+    
   ],
   providers: [AuthService, ErrorInterceptorProvider, AlertifyService, TedApiService],
   bootstrap: [AppComponent]

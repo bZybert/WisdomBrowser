@@ -1,0 +1,77 @@
+<div class="container">
+  <br>
+  <div class="justify-content-end">
+    <div class="float-left">
+      <h3>
+        VIDEOS
+      </h3>
+    </div>
+
+    <div class="float-right">
+      <div class="mr-2">
+        <form #findVideoForm="ngForm" (ngSubmit)="findVideo()" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="description" type="text" placeholder="search in videos" [(ngModel)]="description">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+<div *ngIf="isLoaded">
+  <div *ngFor="let video of videos">
+    <br>
+  
+    <div class="justify-content-center">
+      <div class="card mb-3">
+        <iframe class="card-img-top" height="300"
+          [src]='bypassSecurityTrustResourceUrl(urlAdaptToDisplay(video.youTubeUrl))' frameborder="0"
+          allowfullscreen></iframe>
+        <div class="card-body">
+          <h5 class="card-title">{{video.youTubeTitle}}</h5>
+          <p class="card-text">Speaker: {{video.speaker}}</p>
+          <p class="card-text">Bio: {{video.speakerBio}}</p>
+          <p class="card-text">Desc: {{video.talkDesc}}</p>
+        </div>
+        <hr>
+        <div>
+          <div class="float-left ml-md-2 mb-md-3">
+            <button class="btn btn-light">Add to favourite</button>
+          </div>
+          <div class="float-right mr-2">
+            <a class="card-text" href="{{video.speaker_url}}">source link: {{video.speaker_url}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isLoaded">
+  <div *ngFor="let video of searchedVideos">
+    <br>
+  
+    <div class="justify-content-center">
+      <div class="card mb-3">
+        <iframe class="card-img-top" height="300"
+          [src]='bypassSecurityTrustResourceUrl(urlAdaptToDisplay(video.youTubeUrl))' frameborder="0"
+          allowfullscreen></iframe>
+        <div class="card-body">
+          <h5 class="card-title">{{video.youTubeTitle}}</h5>
+          <p class="card-text">Speaker: {{video.speaker}}</p>
+          <p class="card-text">Bio: {{video.speakerBio}}</p>
+          <p class="card-text">Desc: {{video.talkDesc}}</p>
+        </div>
+        <hr>
+        <div>
+          <div class="float-left ml-md-2 mb-md-3">
+            <button class="btn btn-light">Add to favourite</button>
+          </div>
+          <div class="float-right mr-2">
+            <a class="card-text" href="{{video.speaker_url}}">source link: {{video.speaker_url}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

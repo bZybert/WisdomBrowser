@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <!-- 
   <div *ngIf="!registerMode" style="text-align: center;">
     <h1>Find your course</h1>
     <p class="lead">
@@ -11,7 +12,42 @@
       </button>
       <button class="btn btn-info btn-lg">Learn more</button>
     </div>
+  </div>-->
+  <div>
+    <carousel>
+    <slide>
+      <img src="assets/images/custom/labyrinth.jpg" alt="register" style="display: block; width: 100%; height: 400px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Find your course</h3>
+        <p class="lead">
+          A lot of interesting courses waiting for you... All you need to do is sign
+          up!
+        </p>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg mr-2" (click)="registerToogle()">
+            Register
+          </button>
+          <button class="btn btn-info btn-lg">Learn more</button>
+        </div>
+      </div>
+    </slide>
+    <slide>
+      <img src="assets/images/custom/labyrinth.jpg" alt="second slide" style="display: block; width: 100%;height: 400px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </slide>
+    <slide>
+      <img src="assets/images/custom/labyrinth.jpg" alt="third slide" style="display: block; width: 100%;height: 400px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </slide>
+  </carousel>
   </div>
+  
 <!--
   <div *ngIf="registerMode" class="container mt-5">
     <div class="row justify-content-center">
