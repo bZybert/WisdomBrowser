@@ -20,6 +20,7 @@ export class LoginFormComponent implements OnInit {
       this.alertify.success('Logged in');
     }, error => {
      this.alertify.error('Fail');
+     console.log(error);
     });
     console.log(this.model);
   }

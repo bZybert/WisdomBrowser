@@ -9,6 +9,7 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class ArticleCardComponent implements OnInit {
 articles: Article[] = [];
+description: string;
 
   constructor(private tedApi: TedApiService) { }
 
@@ -23,5 +24,12 @@ articles: Article[] = [];
     }, error => {
       console.log(error);
     })
+  }
+
+  findArticle(){
+    console.log(this.description);
+    this.tedApi.findArticles(this.description).subscribe(resp => {
+      this.articles = resp;
+    });
   }
 }

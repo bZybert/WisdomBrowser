@@ -24,21 +24,15 @@ export class NavComponent implements OnInit {
      this.alertify.success('Logged in')
    }, error => {
     this.alertify.error('Fail');
+    console.log(error);
    });
    console.log(this.model);
  }
 
  loggedIn(){
-   const token = localStorage.getItem('token');
-   // !!true or false (if token == null return false)
-   if (token != null && token.length > 0){
-     return true;
-   }
-   else{
-     return !!token;
-   }
-
- }
+   this.isUserLogged = this.authService.loggedIn();
+   console.log(this.authService.loggedIn());
+}
 
  loggedOut(){
   localStorage.removeItem('token');

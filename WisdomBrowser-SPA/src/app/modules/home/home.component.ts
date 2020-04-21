@@ -13,17 +13,9 @@ export class HomeComponent implements OnInit {
   constructor(private tedApi: TedApiService) { }
 
   ngOnInit() {
-    this.baseContentData();
+    //this.baseContentData();
   }
 
-
-
-baseContentData(){
-  this.tedApi.getBaseContentData().subscribe(response => {
-  this.contentData = response;
-  console.log(response);
-  });
-}
 
   registerToogle(){
   this.registerMode = true;

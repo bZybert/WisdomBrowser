@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
 import { Video } from 'src/app/shared/models/video';
 import { DomSanitizer } from '@angular/platform-browser';
-import { strict } from 'assert';
+import { UserService } from 'src/app/core/http/user/user.service';
 
 
 @Component({
@@ -15,17 +15,22 @@ export class VideoCardComponent implements OnInit {
   searchedVideos: Video[] = [];
   description: string;
   isLoaded: boolean = false;
-  constructor(private tedApi: TedApiService, private sanitizer: DomSanitizer) { }
+  constructor(private tedApi: TedApiService, private sanitizer: DomSanitizer, private userService: UserService) { }
 
   ngOnInit() {
     this.baseVideoContent();
   }
+  ngAfterViewInit(){
+    this.isLoaded = true;
+  }
+  addVideo(name: string, youTubeId: string){
+    this.userService.addVideo();
+  }
 
   findVideo(){
     console.log(this.description);
-    this.tedApi.findVideoData(this.description).subscribe(resp => {
-      this.searchedVideos = resp;
-      console.log(resp);
+    this.tedApi.findVideos(this.description).subscribe(resp => {
+      this.videos = resp;
       }, error => {
         console.log(error);
       });
@@ -47,7 +52,5 @@ export class VideoCardComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-
-    this.isLoaded = true;
   }
 }

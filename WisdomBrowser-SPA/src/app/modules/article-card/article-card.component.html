@@ -9,8 +9,8 @@
     
     <div class="float-right">
       <div class="mr-2">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="search in articles">
+        <form class="form-inline my-2 my-lg-0" #findArticleForm = "ngForm" (ngSubmit)="findArticle()">
+          <input class="form-control mr-sm-2" type="text" name="description" [(ngModel)]="description" placeholder="search in articles">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>  

@@ -6,9 +6,9 @@ using System.Linq;
 namespace WisdomBrowser.API.Domain
 {
     public class User : IdentityUser<int>
-    {
-        private HashSet<Course> _courses; 
-        public IEnumerable<Course> Courses => _courses?.ToList();
+    {        
+        private HashSet<Video> _videos; 
+        public IEnumerable<Video> Videos => _videos?.ToList();
         public User()
         {
             
@@ -18,7 +18,7 @@ namespace WisdomBrowser.API.Domain
 
         }
         
-        public void AddCourse(int numStars, string comment, string voterName /*, DbContext context = null*/) 
+        public void AddVideo(Video video /*, DbContext context = null*/) 
         {
             /*
             if (_courses != null)    
@@ -39,6 +39,6 @@ namespace WisdomBrowser.API.Domain
                 throw new InvalidOperationException("Could not add a new course.");  
             }*/
         }
-        public void RemoveCourse(Course course){}
+        public void RemoveVideo(Video video){}
     }
 }
