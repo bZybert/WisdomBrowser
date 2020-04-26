@@ -44,6 +44,7 @@ namespace WisdomBrowser.API
             services.AddTransient<IAuthRepository, AuthRepository>();  
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
+            services.AddTransient<IVideoRepository, VideoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

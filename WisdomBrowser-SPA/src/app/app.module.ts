@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -19,19 +19,8 @@ import { TedApiService } from './core/http/tedApi/ted-api.service';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ArticleCardComponent } from './modules/article-card/article-card.component';
 import { VideoCardComponent } from './modules/video-card/video-card.component';
-
-
-
-
-const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterFormComponent },
-  { path: 'login', component: LoginFormComponent },
-  { path: 'articles', component: ArticleCardComponent },
-  { path: 'videos', component: VideoCardComponent }
-
-
-];
+import { ProfileCardComponent } from './modules/profile-card/profile-card.component';
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -43,12 +32,14 @@ const appRoutes: Routes = [
     , HomeComponent
     , ArticleCardComponent
     , VideoCardComponent
+    , ProfileCardComponent
   ],
   imports: [
     BrowserModule
     , HttpClientModule
     , RouterModule.forRoot(appRoutes)
     , FormsModule
+    , ReactiveFormsModule
     , BrowserAnimationsModule
     , BsDropdownModule.forRoot()
     , ModalModule.forRoot()

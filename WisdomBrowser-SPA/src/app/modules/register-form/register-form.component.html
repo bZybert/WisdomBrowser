@@ -1,31 +1,56 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-4">
-      
+
+      <form [formGroup]="signupForm" (submit)="onSubmit()">
+        <h2 class="text-center text-primary">Register</h2>
+        <hr>
+        <div class="form-group">
+          <input type="text" class="form-control" name="login" placeholder="Login" formControlName="login">
+          <span *ngIf="!signupForm.get('login').valid && signupForm.get('login').touched" class="help-block">Please enter user Login</span>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password"
+            formControlName="password">
+            <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched" class="help-block">Password required</span>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" email placeholder="Email"
+            formControlName="email">
+            <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched" class="help-block">Please enter correct email address</span>
+        </div>
+
+        <div class="form-group text-center">
+          <button class="btn btn-success md-2" type="submit" [disabled]="!signupForm.valid">Register</button>
+          <button class="btn btn-default" type="button" (click)="cancelRegistration()">Cancel</button>
+        </div>
+      </form>
+<!--
       <form #registerForm="ngForm" (ngSubmit)="register()">
         <h2 class="text-center text-primary">Register</h2>
         <hr>
-      
+
         <div class="form-group">
-          <input type="text" class="form-control" name="login" required [(ngModel)]="model.login" placeholder="Login">
+          <input type="text" class="form-control" name="login" required [(ngModel)]="model.login" placeholder="Login"
+            #login>
         </div>
-      
+
         <div class="form-group">
-          <input type="password" class="form-control" name="password" required [(ngModel)]="model.password" placeholder="Password">
+          <input type="password" class="form-control" name="password" required [(ngModel)]="model.password"
+            placeholder="Password">
         </div>
-      
+
         <div class="form-group">
           <input type="email" class="form-control" name="email" required [(ngModel)]="model.email" placeholder="Email">
         </div>
-      
+
         <div class="form-group text-center">
           <button class="btn btn-success md-2" type="submit">Register</button>
           <button class="btn btn-default" type="button" (click)="cancelRegistration()">Cancel</button>
         </div>
-      
+
       </form>
-      
+-->
     </div>
   </div>
 </div>
-

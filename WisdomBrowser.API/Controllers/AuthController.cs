@@ -22,10 +22,7 @@ namespace WisdomBrowser.API.Controllers
         [HttpGet("home")]
         public async Task<IActionResult> Home()
         {
-            Course course = new Course();
-            course.Title = "DIY";
-
-            return Ok(course);
+            return Ok("OK");
         }
         [HttpGet("register")]
         public async Task<IActionResult> Register()
@@ -66,7 +63,8 @@ namespace WisdomBrowser.API.Controllers
                     return Ok("User doesn't exist");
                 else
                 {
-                    return Ok(user);
+                    UserForDomainDto userForDomain = new UserForDomainDto(user.UserName, user.Email, user.ConcurrencyStamp, user.Id);
+                    return Ok(userForDomain);
                 }
             }
             else return null;

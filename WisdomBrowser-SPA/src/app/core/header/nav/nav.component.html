@@ -1,19 +1,15 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    
-
-    
-    
-    
-    <ul class="nav">
-      <div>
-        <a class="navbar-brand" routerLink="/home">Wisdom Browser</a>
-      </div>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="articles">Articles</a>
+  <div class="nav mr-auto">
+        <a class="navbar-brand" [routerLink]="['/home']">Wisdom Browser</a>
+  </div>
+    <ul class="nav" *ngIf="isUserLogged">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/articles']">Articles</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="videos">Videos</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/videos']">Videos</a>
+      </li>
     </ul>
    
     
@@ -25,9 +21,9 @@
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
             role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a class="dropdown-item" routerLink="register"><i class="fa fa-sign-in"></i> Register</a></li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/register']"><i class="fa fa-sign-in"></i> Register</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" routerLink="login"><i class="fa fa-sign-in"></i> Log in</a>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Log in</a>
           </li>
         </ul>
       </div>
@@ -39,9 +35,9 @@
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
             role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/profile']"><i class="fa fa-user"></i> Profile</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" (click)="loggedOut()" href="#"><i class="fa fa-sign-out"></i> Log out</a>
+          <li role="menuitem"><a class="dropdown-item" (click)="loggedOut()" [routerLink]="['/home']"><i class="fa fa-sign-out"></i> Log out</a>
           </li>
         </ul>
       </div>

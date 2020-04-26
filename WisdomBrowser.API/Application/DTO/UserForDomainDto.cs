@@ -5,14 +5,20 @@ namespace WisdomBrowser.API.Application.DTO
 {
     public class UserForDomainDto
     {
+        public int Id { get; private set; }
         public string Login { get; private set; }
         public string Email { get; private set; }
         public string Stamp { get; private set; }
-        public IEnumerable<Video> Videos {get; private set;}
-
-        public UserForDomainDto(string login, string Email, string stamp, IEnumerable<Video> videos)
+        private UserForDomainDto()
         {
-            
+
+        }
+        public UserForDomainDto(string login, string email, string stamp, int id)
+        {
+            Id = id;
+            Login = login;
+            Email = email;
+            Stamp = stamp;
         }
     }
 }

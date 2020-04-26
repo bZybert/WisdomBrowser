@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { TedDescription } from 'src/app/shared/models/tedDescription';
 import { map } from 'rxjs/operators';
 import { Article } from 'src/app/shared/models/article';
 import { Video } from 'src/app/shared/models/video';
