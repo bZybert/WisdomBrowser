@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WisdomBrowser.API.Migrations
+namespace WisdomBrowser.API.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {

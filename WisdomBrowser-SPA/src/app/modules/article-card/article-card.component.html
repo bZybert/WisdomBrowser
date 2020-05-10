@@ -1,13 +1,13 @@
 <div class="container">
-<br>
-  <div class="justify-content-end">
-    <div class="float-left">
+
+  <div class="d-flex justify-content-between">
+    <div >
       <h3>
       ARTICLES
     </h3>
     </div>
     
-    <div class="float-right">
+    <div >
       <div class="mr-2">
         <form class="form-inline my-2 my-lg-0" #findArticleForm = "ngForm" (ngSubmit)="findArticle()">
           <input class="form-control mr-sm-2" type="text" name="description" [(ngModel)]="description" placeholder="search in articles">
@@ -16,31 +16,22 @@
       </div>  
     </div>
   </div>
-<br>  
+  <hr>  
 
-  <div *ngFor="let article of articles">
-    <div class="card-body justify-content-center">
-      <br>
-      <h5 class="card-title">{{article.name}}</h5>
-      <p class="card-text">{{article.transcript}}</p>
-      <a href="#" class="btn btn-primary">Watch Video</a>
-    </div>
-
-    <!--
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="image">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{article.name}}</h5>
-            <p class="card-text">{{article.transcript}}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
+  <div *ngFor="let article of articles, let i = index" [attr.data-index]="i" >
+    
+    <div class="card d-flex flex-column md-4 ">
+      <div class="card-header">
+        Result {{i + 1}}
       </div>
-  </div>
-  -->
+      <div class="card-body" >
+        <h5 class="card-title">{{article.name}}</h5>
+        <div style="overflow-y: scroll; height: 300px">
+          <p class="card-text">{{article.transcript}}</p>
+        </div>
+        <hr>
+        <a href="#" class="btn btn-primary md-2">Add to favourite</a>
+      </div>
+    </div>
 
 </div>

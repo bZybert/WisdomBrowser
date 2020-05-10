@@ -1,29 +1,28 @@
 <div class="container">
-  <br>
-  <div class="justify-content-end">
-    <div class="float-left">
+  <div class="d-flex justify-content-between">
+    <div >
       <h3>
         VIDEOS
       </h3>
     </div>
 
-    <div class="float-right">
+    <div>
       <div class="mr-2">
         <form class="form-inline my-2 my-lg-0" #findVideoForm = "ngForm" (ngSubmit)="findVideo()">
-          <input class="form-control mr-sm-2" type="text" name="description" [(ngModel)]="description" placeholder="search in videos">
+          <input class="form-control mr-sm-2 form-control-dark w-60" type="text" name="description" [(ngModel)]="description" placeholder="search in videos">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </div>
   </div>
-  <br>
+  <hr>  
+ 
   <br>
   <div>
     <div *ngFor="let video of videos">
-      <br>
     
-      <div class="justify-content-center">
-        <div class="card mb-3">
+      <div class="card d-flex flex-column">
+        <div class="card">
           <iframe class="card-img-top" height="300"
             [src]='bypassSecurityTrustResourceUrl(urlAdaptToDisplay(video.youTubeUrl))' frameborder="0"
             allowfullscreen></iframe>

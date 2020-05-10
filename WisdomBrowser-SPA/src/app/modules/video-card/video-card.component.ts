@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
+import { FavouriteApiService } from 'src/app/core/http/favouriteApi/favourite-api.service';
 import { Video } from 'src/app/shared/models/video';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from 'src/app/core/http/user/user.service';
+import { VideoToSave } from 'src/app/shared/models/videoToSave';
 
 
 @Component({
@@ -12,10 +13,11 @@ import { UserService } from 'src/app/core/http/user/user.service';
 })
 export class VideoCardComponent implements OnInit {
   videos: Video[] = [];
+  videoFav: VideoToSave;
   searchedVideos: Video[] = [];
   description: string;
   isLoaded: boolean = false;
-  constructor(private tedApi: TedApiService, private sanitizer: DomSanitizer, private userService: UserService) { }
+  constructor(private favouriteApi: FavouriteApiService, private sanitizer: DomSanitizer, private userService: UserService) { }
 
   ngOnInit() {
     this.baseVideoContent();
@@ -23,13 +25,15 @@ export class VideoCardComponent implements OnInit {
   ngAfterViewInit(){
     this.isLoaded = true;
   }
-  addVideo(name: string, youTubeId: string){
-    this.userService.addVideo();
+  addVideo(name: string, youTubeVideoId: string){
+    var userId = parseInt(localStorage.getItem('userId'));
+    this.videoFav = {userId: userId, youTubeID: youTubeVideoId, name: name};
+    this.userService.addVideo(this.videoFav);
   }
 
   findVideo(){
     console.log(this.description);
-    this.tedApi.findVideos(this.description).subscribe(resp => {
+    this.favouriteApi.findVideos(this.description).subscribe(resp => {
       this.videos = resp;
       }, error => {
         console.log(error);
@@ -47,7 +51,7 @@ export class VideoCardComponent implements OnInit {
   }
 
   baseVideoContent(){
-    this.tedApi.getBaseVideoContentData().subscribe(resp => {
+    this.favouriteApi.getBaseVideoContentData().subscribe(resp => {
     this.videos = resp;
     }, error => {
       console.log(error);

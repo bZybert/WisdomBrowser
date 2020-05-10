@@ -1,21 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WisdomBrowser.API.Application.DTO;
-using WisdomBrowser.API.Domain;
 using WisdomBrowser.API.Domain.Interfaces;
-using WisdomBrowser.API.Infrastructure.EFCore;
 
-namespace WisdomBrowser.API.Controllers
+namespace WisdomBrowser.API.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private EFContext _context { get; }
         private IAuthRepository _authRepository { get; }
-        public AuthController(EFContext context, IAuthRepository authRepository)
+        public AuthController(IAuthRepository authRepository)
         {
-            _context = context;
             _authRepository = authRepository;
         }
 

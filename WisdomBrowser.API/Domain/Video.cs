@@ -2,11 +2,10 @@ namespace WisdomBrowser.API.Domain
 {
     public class Video
     {
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         public string Name { get; private set; }
         public string YouTubeID { get; private set; }
         public int UserId { get; private set; }
-        public bool IsArchive { get; private set; }
         private Video()
         {
             
@@ -18,9 +17,9 @@ namespace WisdomBrowser.API.Domain
             UserId = userId;
         }
 
-        public void SetVideoAsArchived()
-        {
-            IsArchive = true;
-        }
+        //public void SetVideoAsArchived()
+        //{
+        //    IsArchive = true;
+        //}
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Net;
+using WisdomBrowser.API.Application.Services;
 using WisdomBrowser.API.Domain;
 using WisdomBrowser.API.Domain.Interfaces;
 using WisdomBrowser.API.Infrastructure.EFCore;
@@ -42,9 +43,11 @@ namespace WisdomBrowser.API
             //    .AddInMemoryClients(Config.GetClients(Configuration.GetSection("HostSettings:WebAppClientUrl").Value.ToString()))
             //    .AddAspNetIdentity<ApplicationUser>();
             services.AddTransient<IAuthRepository, AuthRepository>();  
+            services.AddTransient<IVideoRepository, VideoRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IFavouriteApplicationService, FavouriteApplicationService>();
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
-            services.AddTransient<IVideoRepository, VideoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

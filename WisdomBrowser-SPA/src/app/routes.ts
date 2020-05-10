@@ -6,9 +6,11 @@ import { ArticleCardComponent } from './modules/article-card/article-card.compon
 import { VideoCardComponent } from './modules/video-card/video-card.component';
 import { ProfileCardComponent } from './modules/profile-card/profile-card.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CarouselMainComponent } from './modules/carousel-main/carousel-main.component';
 
 export const appRoutes : Routes = [
-  { path: 'home', component: HomeComponent },
+  //{ path: 'home', component: HomeComponent },
+  { path: 'main', component: CarouselMainComponent},
   { path: 'register', component: RegisterFormComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'articles', component: ArticleCardComponent, canActivate: [AuthGuard] },

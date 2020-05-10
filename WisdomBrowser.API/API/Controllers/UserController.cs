@@ -1,16 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WisdomBrowser.API.Application.DTO;
 using WisdomBrowser.API.Domain.Interfaces;
-using WisdomBrowser.API.Infrastructure.EFCore;
-using WisdomBrowser.API.Infrastructure.Repositories;
 
-namespace WisdomBrowser.API.Controllers
+namespace WisdomBrowser.API.API.Controllers
 {
     //[Authorize]
     [ApiController]
@@ -18,11 +12,13 @@ namespace WisdomBrowser.API.Controllers
     public class UserController : ControllerBase
     {
         private IVideoRepository _videosRepo;
-        private EFContext _context;
-        public UserController(IVideoRepository videoRepository, EFContext context)
+        private IUserRepository _userRepository;
+        private IFavouriteApplicationService _favouriteApplicationService;
+        public UserController(IVideoRepository videoRepository, IUserRepository userRepository, IFavouriteApplicationService favouriteApplicationService)
         {
+            _userRepository = userRepository;
             _videosRepo = videoRepository;
-            _context = context;
+            _favouriteApplicationService = favouriteApplicationService;
         }
         [HttpGet("index")]
         public async Task<IActionResult> Index()
@@ -35,7 +31,7 @@ namespace WisdomBrowser.API.Controllers
         public async Task<IActionResult> GetUser([FromHeader]int userId)
         {
 
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            var user = await _userRepository.GetUser(userId);
 
             if (user == null)
                 return BadRequest("User doesnt exist");
@@ -57,6 +53,20 @@ namespace WisdomBrowser.API.Controllers
             else
             {
                 return Ok(videos);
+            }
+        }
+
+        [HttpPost("addFavouriteVideo")]
+        public async Task<IActionResult> AddFavouriteVideo([FromHeader]VideoFavouriteDto videoFavouriteDto)
+        {
+            if (videoFavouriteDto == null) return BadRequest("Problem with video data"); ;
+
+            bool isAdded = await _favouriteApplicationService.AddNewFavouriteVideo(videoFavouriteDto);
+            if (!isAdded)
+                return BadRequest("AddFavouriteVideo return fail");
+            else
+            {
+                return Ok(isAdded);
             }
         }
     }

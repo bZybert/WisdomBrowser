@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WisdomBrowser.API.Infrastructure.EFCore;
 
-namespace WisdomBrowser.API.Migrations
+namespace WisdomBrowser.API.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20200422183603_AddVideoModel")]
-    partial class AddVideoModel
+    [Migration("20200510135711_updateVideoDataModel")]
+    partial class updateVideoDataModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,7 +220,7 @@ namespace WisdomBrowser.API.Migrations
 
             modelBuilder.Entity("WisdomBrowser.API.Domain.Video", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -235,6 +235,8 @@ namespace WisdomBrowser.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Videos");
                 });
@@ -285,6 +287,15 @@ namespace WisdomBrowser.API.Migrations
                 {
                     b.HasOne("WisdomBrowser.API.Domain.User", null)
                         .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WisdomBrowser.API.Domain.Video", b =>
+                {
+                    b.HasOne("WisdomBrowser.API.Domain.User", null)
+                        .WithMany("Videos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

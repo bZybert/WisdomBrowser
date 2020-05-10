@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
+import { FavouriteApiService } from 'src/app/core/http/favouriteApi/favourite-api.service';
 import { Article } from 'src/app/shared/models/article';
 
 @Component({
@@ -11,14 +11,14 @@ export class ArticleCardComponent implements OnInit {
 articles: Article[] = [];
 description: string;
 
-  constructor(private tedApi: TedApiService) { }
+  constructor(private favouriteApi: FavouriteApiService) { }
 
   ngOnInit() {
     this.baseContent();
   }
 
   baseContent(){
-    this.tedApi.getBaseArticlesContentData().subscribe(resp => {
+    this.favouriteApi.getBaseArticlesContentData().subscribe(resp => {
       this.articles = resp;
       console.log(resp);
     }, error => {
@@ -28,8 +28,12 @@ description: string;
 
   findArticle(){
     console.log(this.description);
-    this.tedApi.findArticles(this.description).subscribe(resp => {
+    this.favouriteApi.findArticles(this.description).subscribe(resp => {
       this.articles = resp;
     });
+  }
+
+  addToFavourite(){
+    
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
+import { FavouriteApiService } from 'src/app/core/http/favouriteApi/favourite-api.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { TedApiService } from 'src/app/core/http/tedApi/ted-api.service';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  constructor(private tedApi: TedApiService) { }
+  constructor(private favouriteApi: FavouriteApiService) { }
 
   ngOnInit() {
     //this.baseContentData();

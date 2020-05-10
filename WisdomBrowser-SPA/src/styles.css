@@ -7,3 +7,15 @@
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+
+.dark {
+    background-color: rgb(51, 58, 64);
+}
+
+.grey {
+    background-color: rgb(33, 37, 41);
+}
+
+.test {
+    border: 1px solid black;
+}

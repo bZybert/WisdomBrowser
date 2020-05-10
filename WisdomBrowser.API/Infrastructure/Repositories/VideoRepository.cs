@@ -40,7 +40,7 @@ namespace WisdomBrowser.API.Infrastructure.Repositories
                 return false;
             else
             {
-                videoToUpdate.SetVideoAsArchived();
+                //videoToUpdate.SetVideoAsArchived();
                 _context.Videos.Add(videoToUpdate);
                 await _context.SaveChangesAsync();
                 return true;

@@ -7,7 +7,7 @@ import { Video } from 'src/app/shared/models/video';
 @Injectable({
   providedIn: 'root'
 })
-export class TedApiService {
+export class FavouriteApiService {
   baseUrl = 'https://bestapi-ted-v1.p.rapidapi.com/';
 
 constructor(private http: HttpClient) { }

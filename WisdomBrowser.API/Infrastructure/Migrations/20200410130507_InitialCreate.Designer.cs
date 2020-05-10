@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WisdomBrowser.API.Infrastructure.EFCore;
 
-namespace WisdomBrowser.API.Migrations
+namespace WisdomBrowser.API.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
     [Migration("20200410130507_InitialCreate")]

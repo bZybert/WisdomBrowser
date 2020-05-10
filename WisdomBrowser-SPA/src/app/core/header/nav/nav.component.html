@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container">
-  <div class="nav mr-auto">
-        <a class="navbar-brand" [routerLink]="['/home']">Wisdom Browser</a>
-  </div>
+  <div class="container-fluid">
+    <div class="nav mr-auto">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]="['/main']">Wisdom Browser</a>
+    </div>
+    <!--
     <ul class="nav" *ngIf="isUserLogged">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/articles']">Articles</a>
@@ -11,40 +12,42 @@
         <a class="nav-link" [routerLink]="['/videos']">Videos</a>
       </li>
     </ul>
-   
-    
+   -->
+
     <div>
-        <div *ngIf="!isUserLogged" class="btn-group" dropdown>
+      <div *ngIf="!isUserLogged" class="btn-group" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                aria-controls="dropdown-basic">
+          aria-controls="dropdown-basic">
           Join in <span class="caret"></span>
         </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/register']"><i class="fa fa-sign-in"></i> Register</a></li>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/register']"><i class="fa fa-sign-in"></i>
+              Register</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Log in</a>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Log
+              in</a>
           </li>
         </ul>
       </div>
 
       <div *ngIf="isUserLogged" class="btn-group" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                aria-controls="dropdown-basic">
+          aria-controls="dropdown-basic">
           Welcome User <span class="caret"></span>
         </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/profile']"><i class="fa fa-user"></i> Profile</a></li>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['/profile']"><i class="fa fa-user"></i>
+              Profile</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" (click)="loggedOut()" [routerLink]="['/home']"><i class="fa fa-sign-out"></i> Log out</a>
+          <li role="menuitem"><a class="dropdown-item" (click)="loggedOut()" [routerLink]="['/home']"><i
+                class="fa fa-sign-out"></i> Log out</a>
           </li>
         </ul>
       </div>
     </div>
-    
 
-<!--
+
+    <!--
     <div *ngIf="!isUserLogged" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
         Join in
@@ -71,7 +74,7 @@
     <ng-template #template>
       <app-login-form></app-login-form>
     </ng-template>
-<!--
+    <!--
     <form
       *ngIf="!loggedIn()"
       #loginForm="ngForm"
@@ -102,7 +105,7 @@
         Login
       </button>
     </form>
--->    
+-->
   </div>
-  
+
 </nav>

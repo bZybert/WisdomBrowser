@@ -15,12 +15,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginFormComponent } from './modules/login-form/login-form.component';
-import { TedApiService } from './core/http/tedApi/ted-api.service';
+import { FavouriteApiService } from './core/http/favouriteApi/favourite-api.service';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ArticleCardComponent } from './modules/article-card/article-card.component';
 import { VideoCardComponent } from './modules/video-card/video-card.component';
 import { ProfileCardComponent } from './modules/profile-card/profile-card.component';
 import { appRoutes } from './routes';
+import { NavLeftComponent } from './modules/nav-left/nav-left.component';
+import { CarouselMainComponent } from './modules/carousel-main/carousel-main.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { appRoutes } from './routes';
     , ArticleCardComponent
     , VideoCardComponent
     , ProfileCardComponent
+    , NavLeftComponent
+    , CarouselMainComponent
   ],
   imports: [
     BrowserModule
@@ -46,7 +50,7 @@ import { appRoutes } from './routes';
     , CarouselModule.forRoot()
     
   ],
-  providers: [AuthService, ErrorInterceptorProvider, AlertifyService, TedApiService],
+  providers: [AuthService, ErrorInterceptorProvider, AlertifyService, FavouriteApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserProfile } from 'src/app/shared/models/userProfile';
 import { map } from 'rxjs/operators';
+import { VideoToSave } from 'src/app/shared/models/videoToSave';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ baseUrl = 'http://localhost:5000/user/';
 
 constructor(private http: HttpClient) { }
 
-addVideo(){
- // return this.http.post()
+addVideo(video: VideoToSave){
+  return this.http.post(this.baseUrl + 'addFavouriteVideo', video);
 }
 getVideos(){}
 
-addArdicle(){
+addArticle(){
 
 }
 getArticles(){}

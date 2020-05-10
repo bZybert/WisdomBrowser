@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WisdomBrowser.API.Infrastructure.EFCore;
 
-namespace WisdomBrowser.API.Migrations
+namespace WisdomBrowser.API.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20200422183133_updateUserModel")]
-    partial class updateUserModel
+    [Migration("20200422183603_AddVideoModel")]
+    partial class AddVideoModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -216,6 +216,27 @@ namespace WisdomBrowser.API.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("WisdomBrowser.API.Domain.Video", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("YouTubeID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Videos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
